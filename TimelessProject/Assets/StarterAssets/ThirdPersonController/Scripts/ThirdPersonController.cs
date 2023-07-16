@@ -86,6 +86,7 @@ namespace StarterAssets
         private float _rotationVelocity;
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
+        private bool _canMove = true;
 
         // timeout deltatime
         private float _jumpTimeoutDelta;
@@ -158,12 +159,17 @@ namespace StarterAssets
 
             JumpAndGravity();
             GroundedCheck();
-            Move();
+            
+            MeleeAttack();
+
+            if(_canMove) {
+                Move();
+            }
         }
 
         private void LateUpdate()
         {
-            CameraRotation();
+            //CameraRotation();
         }
 
         private void AssignAnimationIDs()
@@ -387,6 +393,23 @@ namespace StarterAssets
             {
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
             }
+        }
+
+        private void MeleeAttack()
+        {
+            if(Input.GetMouseButtonDown(0)) {
+                _animator.SetTrigger("Attack");
+            }
+        }
+
+        private void OnAttackStart()
+        {
+            _canMove = false;
+        }
+
+        private void OnAttackEnd()
+        {
+            _canMove = true;
         }
     }
 }
