@@ -538,7 +538,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 844626258}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.32, y: 2.1327972, z: 4.332161}
+  m_LocalPosition: {x: -9.06, y: 2.1327972, z: 4.332161}
   m_LocalScale: {x: 5.8400297, y: 5.8400297, z: 5.8400297}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -832,7 +832,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1869456791}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.98, y: 0.5, z: 0}
+  m_LocalPosition: {x: 12.26, y: 0.5, z: -4.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -925,6 +925,7 @@ MonoBehaviour:
   guardSpeed: 5
   guardPause: 0.3
   guardTurnTime: 90
+  timeToSpotPlayer: 0.5
   spotlight: {fileID: 62738186}
   viewDistance: 10.57
   viewMask:
