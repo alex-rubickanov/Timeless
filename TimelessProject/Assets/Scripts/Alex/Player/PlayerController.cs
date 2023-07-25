@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,11 +8,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float sprintSpeed;
     [Header("SET ROTATION SMOOTHNESS")] [Range(2,10)]
     [SerializeField] private int rotationFactorPerFrame = 2;
-
+    [Header("SET THE JUMP HEIGHT")]
+    [SerializeField] private float jumpHeight;
+    [Header("SET THE GRAVITY")]
+    [SerializeField] private float gravity = -9.8f;
+    
     private CharacterController _characterController;
     private Vector3 _direction;
-    
+    private float yMovement;
     public bool CanMove = true;
+    [SerializeField] private bool _isJumping; 
+    
 
     private void Start()
     {
@@ -22,6 +27,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        HandleGravity();
+        HandleJumping();
         HandleMovement();
         HandleRotation();
     }
@@ -35,7 +42,30 @@ public class PlayerController : MonoBehaviour
         Vector2 inputVector = GameInput.Instance.GetMovementVector();
         _direction = new Vector3(inputVector.x, 0, inputVector.y).normalized;
 
-        _characterController.Move(_direction * currentMoveSpeed * Time.deltaTime);
+        _characterController.Move((_direction * currentMoveSpeed  + new Vector3(0, yMovement, 0) ) * Time.deltaTime);
+    }
+
+    private void HandleGravity()
+    {
+        yMovement += gravity * Time.deltaTime;
+    }
+
+    private void HandleJumping()
+    {
+        if (_characterController.isGrounded)
+        {
+            // player is grounded
+            _isJumping = false;
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                // player jumps
+                yMovement = jumpHeight;
+            }
+        }
+        else
+        {
+            _isJumping = true;
+        }
     }
 
     private void HandleRotation()
@@ -52,11 +82,16 @@ public class PlayerController : MonoBehaviour
 
     public bool IsRunning()
     {
-        return _direction.magnitude != 0 ? true : false;
+        return _direction.magnitude != 0;
     }
 
     public bool IsSprinting()
     {
         return GameInput.Instance.IsSprintPressed();
+    }
+
+    public bool IsGrounded()
+    {
+        return _characterController.isGrounded;
     }
 }

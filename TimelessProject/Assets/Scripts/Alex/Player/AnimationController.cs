@@ -10,6 +10,7 @@ public class AnimationController : MonoBehaviour
     private int _animIDIsRunning;
     private int _animIDIsSprinting;
     private int _animIDIsAttack;
+    private int _animIDIsFalling;
 
     private void Awake()
     {
@@ -39,6 +40,7 @@ public class AnimationController : MonoBehaviour
     {
         _animator.SetBool(_animIDIsRunning, _playerController.IsRunning());
         _animator.SetBool(_animIDIsSprinting, _playerController.IsSprinting());
+        _animator.SetBool(_animIDIsFalling, !_playerController.IsGrounded());
     }
 
     private void AssignAnimationsID()
@@ -46,5 +48,6 @@ public class AnimationController : MonoBehaviour
         _animIDIsRunning = Animator.StringToHash("IsRunning");
         _animIDIsSprinting = Animator.StringToHash("IsSprinting");
         _animIDIsAttack = Animator.StringToHash("Attack");
+        _animIDIsFalling = Animator.StringToHash("IsFalling");
     }
 }
