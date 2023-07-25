@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a2bf5d0df2592e4a972d351d6fdaf0a, type: 3}
-  m_Name: Batman
+  m_Name: Spiderman
   m_EditorClassIdentifier: 
-  Name: Batman
-  Sprite: {fileID: 21300000, guid: 5de15cd0718559c46af2152bf9dc06ff, type: 3}
+  Name: Spiderman
+  Sprite: {fileID: 21300000, guid: a81504244e0d4744382a72ed20688095, type: 3}

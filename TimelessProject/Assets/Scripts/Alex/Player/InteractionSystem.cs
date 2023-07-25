@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class InteractionSystem : MonoBehaviour
@@ -7,9 +6,16 @@ public class InteractionSystem : MonoBehaviour
 
     private void Update()
     {
-        RaycastHit hit;
-        Physics.Raycast(transform.position, Vector3.forward, out hit, distanceToInteract);
-        
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            RaycastHit hitInfo;
+            if (!Physics.Raycast(transform.position, Vector3.forward, out hitInfo, distanceToInteract)) return;
+
+            if (hitInfo.collider.TryGetComponent(out IInteractable interactable))
+            {
+                interactable.Interact();
+            }
+        }
         
     }
 

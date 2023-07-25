@@ -11,6 +11,7 @@ public class DialogueSO : ScriptableObject
 
     private void AssignSpeakers()
     {
+        if (SpeakerOne == null || SpeakerTwo == null || Sentences == null) return;
         foreach (Sentence sentence in Sentences)
         {
             sentence.SetSpeakerSO(sentence.IsFirstSpeaker ? SpeakerOne : SpeakerTwo);
