@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -66,6 +67,8 @@ public class PlayerController : MonoBehaviour
         {
             _isJumping = true;
         }
+        // delete it
+        if (_isJumping) return;
     }
 
     private void HandleRotation()
