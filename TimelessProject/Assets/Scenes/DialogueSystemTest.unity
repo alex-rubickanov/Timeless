@@ -6314,7 +6314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 903265b01c6b7ca4db1c774460eb66cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceToInteract: 1
+  distanceToInteract: 1.5
 --- !u!33 &9088580536209005351
 MeshFilter:
   m_ObjectHideFlags: 0

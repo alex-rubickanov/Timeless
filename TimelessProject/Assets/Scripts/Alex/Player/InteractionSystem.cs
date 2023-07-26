@@ -6,21 +6,23 @@ public class InteractionSystem : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        RaycastHit hitInfo;
+        if (!Physics.Raycast(transform.position + Vector3.up, transform.forward, out hitInfo, distanceToInteract)) return;
+        
+        if (hitInfo.collider.TryGetComponent(out IInteractable interactable))
         {
-            RaycastHit hitInfo;
-            if (!Physics.Raycast(transform.position, Vector3.forward, out hitInfo, distanceToInteract)) return;
-
-            if (hitInfo.collider.TryGetComponent(out IInteractable interactable))
+            
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 interactable.Interact();
             }
         }
         
+        
     }
 
     private void OnDrawGizmosSelected()
     {
-        Debug.DrawRay(transform.position, Vector3.forward * distanceToInteract, Color.green);
+        Debug.DrawRay(transform.position + Vector3.up, transform.forward * distanceToInteract, Color.green);
     }
 }

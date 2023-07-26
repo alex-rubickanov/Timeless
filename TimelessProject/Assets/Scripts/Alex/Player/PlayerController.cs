@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
         if (!CanMove) return;
         
         float currentMoveSpeed = GameInput.Instance.IsSprintPressed() ? sprintSpeed : runSpeed;
+        if (_isJumping) currentMoveSpeed = runSpeed;
         
         Vector2 inputVector = GameInput.Instance.GetMovementVector();
         _direction = new Vector3(inputVector.x, 0, inputVector.y).normalized;
@@ -67,8 +68,6 @@ public class PlayerController : MonoBehaviour
         {
             _isJumping = true;
         }
-        // delete it
-        if (_isJumping) return;
     }
 
     private void HandleRotation()
