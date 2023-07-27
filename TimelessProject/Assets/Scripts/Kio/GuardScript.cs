@@ -1,10 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GuardScript : MonoBehaviour
 {
-    public static event System.Action OnGuardHasSpottedPlayer;
+    public static event Action OnGuardHasSpottedPlayer;
 
     [SerializeField] Transform pathHolder;
 

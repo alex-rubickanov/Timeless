@@ -20,8 +20,9 @@ public class Dialogue : MonoBehaviour
     [Space(10)]
     [SerializeField] private TextMeshProUGUI textField;
     
-    private DialogueSO currentDialogue;
-    private int currentSentenceIndex;
+    private DialogueSO _currentDialogue;
+    private int _currentSentenceIndex;
+    private bool _isActiveAlready;
     
     private void Awake()
     {
@@ -37,22 +38,23 @@ public class Dialogue : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("PRESS F TO INTERACT");
         CloseDialogueWindow();
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        ShowDialogue();
+            
+        if(Input.GetMouseButtonDown(0))
         {
             Step();
         }
-
-        ShowDialogue();
     }
 
     private void ShowDialogue()
     {
-        if (currentDialogue.Sentences[currentSentenceIndex].IsFirstSpeaker)
+        if (_currentDialogue.Sentences[_currentSentenceIndex].IsFirstSpeaker)
         {
             ShowLeftSpeaker();
         }
@@ -61,7 +63,7 @@ public class Dialogue : MonoBehaviour
             ShowRightSpeaker();
         }
 
-        textField.text = currentDialogue.Sentences[currentSentenceIndex].sentenceText;
+        textField.text = _currentDialogue.Sentences[_currentSentenceIndex].sentenceText;
     }
 
     private void ShowLeftSpeaker()
@@ -84,13 +86,17 @@ public class Dialogue : MonoBehaviour
     
     public void StartDialogue(DialogueSO dialogueSO)
     {
-        currentDialogue = dialogueSO;
-        
-        OpenDialogueWindow();
+        if(_isActiveAlready) return;
+
+        _isActiveAlready = true;
+
+        _currentDialogue = dialogueSO;
 
         AssignSpeakersData(dialogueSO);
 
-        currentSentenceIndex = 0;
+        _currentSentenceIndex = 0;
+
+        OpenDialogueWindow();
     }
 
     private void AssignSpeakersData(DialogueSO dialogueSO)
@@ -104,13 +110,13 @@ public class Dialogue : MonoBehaviour
 
     private void Step()
     {
-        if (currentDialogue.Sentences.Length - 1 == currentSentenceIndex)
+        if (_currentDialogue.Sentences.Length - 1 == _currentSentenceIndex)
         {
             CloseDialogueWindow();
         }
         else
         {
-            currentSentenceIndex++;
+            _currentSentenceIndex++;
         }
     }
 
@@ -124,6 +130,11 @@ public class Dialogue : MonoBehaviour
     private void CloseDialogueWindow()
     {
         Time.timeScale = 1;
+
+        _isActiveAlready = false;
+
+        speakerOneSprite.SetActive(false);
+        speakerTwoSprite.SetActive(false);
         gameObject.SetActive(false);
     }
 }

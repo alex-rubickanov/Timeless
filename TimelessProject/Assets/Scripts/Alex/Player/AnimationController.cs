@@ -28,7 +28,7 @@ public class AnimationController : MonoBehaviour
 
     private void PlayAttack()
     {
-        _animator.SetTrigger(_animIDIsAttack);
+        _animator.SetTrigger(_animIDIsAttack);  
     }
 
     private void Update()
