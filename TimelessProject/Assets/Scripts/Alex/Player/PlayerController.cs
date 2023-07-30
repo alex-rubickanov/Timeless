@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("SET THE MAX HP")]
+    [SerializeField] private float maxHealth;
     [Header("SET THE RUNNING SPEED")]
     [SerializeField] private float runSpeed;
     [Header("SET THE SPRINT SPEED")]
@@ -13,17 +15,21 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpHeight;
     [Header("SET THE GRAVITY")]
     [SerializeField] private float gravity = -9.8f;
-    
+
+
+    private float health;
     private CharacterController _characterController;
     private Vector3 _direction;
     private float yMovement;
     public bool CanMove = true;
-    [SerializeField] private bool _isJumping; 
+    private bool _isJumping; 
     
 
     private void Start()
     {
         _characterController = GetComponent<CharacterController>();
+
+        health = maxHealth;
     }
 
     private void Update()
@@ -90,6 +96,25 @@ public class PlayerController : MonoBehaviour
     public bool IsSprinting()
     {
         return GameInput.Instance.IsSprintPressed();
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        if (IsDead())
+        {
+            // DEAD
+        }
+        else
+        {
+            // TAKE DAMAGE ANIMATION
+        }
+        
+    }
+
+    private bool IsDead()
+    {
+        return health <= 0;
     }
 
     public bool IsGrounded()

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -43,5 +44,21 @@ public class GameInput : MonoBehaviour
     public bool IsSprintPressed()
     {
         return _isSprintPressed;
+    }
+
+    public void DisalbePlayerControls()
+    {
+        _inputActions.Disable();
+    }
+
+    public void EnableControlsWithDelay(float delay)
+    {
+        StartCoroutine(EnableControlsEnum(delay));
+    }
+    
+    private IEnumerator EnableControlsEnum(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        _inputActions.Player.Enable();
     }
 }

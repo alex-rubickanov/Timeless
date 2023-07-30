@@ -6,7 +6,7 @@ public class CombatSystem : MonoBehaviour
 {
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRange;
-    [SerializeField] private int meleeDamage;
+    [SerializeField] private float meleeDamage;
 
     private PlayerController _playerController;
     private bool _canAttack = true;
@@ -39,13 +39,11 @@ public class CombatSystem : MonoBehaviour
     private void OnAttackStart()
     {
         _canAttack = false;
-        _playerController.CanMove = false;
     }
 
     private void OnAttackEnd()
     {
         _canAttack = true;
-        _playerController.CanMove = true;
     }
 
     private void OnAttack() // Called in animation

@@ -2,26 +2,28 @@ using UnityEngine;
 
 public class EnemyTest : MonoBehaviour, IDamagable
 {
-    [SerializeField] private int maxHealth;
-    private int currentHealth;
+    [SerializeField] private float maxHealth;
+    private float currentHealth;
 
     private void Start()
     {
         currentHealth = maxHealth;
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(float takenDamage)
     {
-        currentHealth -= damage;
-        CheckDeath();
-        Debug.Log(currentHealth);
-    }
-
-    public void CheckDeath()
-    {
-        if(currentHealth <= 0) {
-            // Play animation
-
+        currentHealth -= takenDamage;
+        if (IsDead())
+        {
             Destroy(gameObject);
         }
+        else
+        {
+            // nothing
+        }
+    }
+
+    public bool IsDead()
+    {
+        return currentHealth <= 0.0f;
     }
 }

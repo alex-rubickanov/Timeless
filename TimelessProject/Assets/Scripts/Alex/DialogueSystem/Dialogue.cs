@@ -19,6 +19,8 @@ public class Dialogue : MonoBehaviour
     
     [Space(10)]
     [SerializeField] private TextMeshProUGUI textField;
+
+    [SerializeField] private float delayToEnableControls;
     
     private DialogueSO _currentDialogue;
     private int _currentSentenceIndex;
@@ -38,7 +40,6 @@ public class Dialogue : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("PRESS F TO INTERACT");
         CloseDialogueWindow();
     }
 
@@ -124,13 +125,15 @@ public class Dialogue : MonoBehaviour
     
     private void OpenDialogueWindow()
     {
-        Time.timeScale = 0;
+        // disable player controls
+        GameInput.Instance.DisalbePlayerControls();
         gameObject.SetActive(true);
     }
     private void CloseDialogueWindow()
     {
-        Time.timeScale = 1;
-
+        // enable player controls with delay
+        GameInput.Instance.EnableControlsWithDelay(delayToEnableControls);
+        
         _isActiveAlready = false;
 
         speakerOneSprite.SetActive(false);
