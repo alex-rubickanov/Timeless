@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_characterController.isGrounded)
         {
-            yVelocity = 0;
+            yVelocity = -0.5f;
         }
         yVelocity += gravity * Time.deltaTime;
 
