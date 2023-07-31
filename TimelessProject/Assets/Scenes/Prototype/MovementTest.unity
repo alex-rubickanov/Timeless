@@ -366,6 +366,31 @@ PrefabInstance:
       propertyPath: cameraSpeed
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 8967530717981323510, guid: 4a4d87c93f4db754e9ce54f9d1899ae0,
+        type: 3}
+      propertyPath: cameraAngleX
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967530717981323510, guid: 4a4d87c93f4db754e9ce54f9d1899ae0,
+        type: 3}
+      propertyPath: maxClampZPos
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967530717981323510, guid: 4a4d87c93f4db754e9ce54f9d1899ae0,
+        type: 3}
+      propertyPath: minClampZPos
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967530717981323510, guid: 4a4d87c93f4db754e9ce54f9d1899ae0,
+        type: 3}
+      propertyPath: positionOffset.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967530717981323510, guid: 4a4d87c93f4db754e9ce54f9d1899ae0,
+        type: 3}
+      propertyPath: positionOffset.z
+      value: -5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -779,6 +804,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 130319324820611707, guid: 41eab23b46ff52241951a7a24b5a4903,
+        type: 3}
+      propertyPath: maxJumpTime
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 130319324820611707, guid: 41eab23b46ff52241951a7a24b5a4903,
+        type: 3}
+      propertyPath: maxJumpHeight
+      value: 2.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5682070063264103696, guid: 41eab23b46ff52241951a7a24b5a4903,
         type: 3}
       propertyPath: m_Enabled

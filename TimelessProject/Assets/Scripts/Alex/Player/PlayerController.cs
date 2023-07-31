@@ -12,7 +12,9 @@ public class PlayerController : MonoBehaviour
     [Header("SET ROTATION SMOOTHNESS")] [Range(2,10)]
     [SerializeField] private int rotationFactorPerFrame = 2;
     [Header("SET THE JUMP HEIGHT")]
-    [SerializeField] private float jumpHeight;
+    [SerializeField] private float maxJumpHeight = 1.0f;
+    [Header("SET THE JUMP TIME")]
+    [SerializeField] private float maxJumpTime = 0.5f;
     [Header("SET THE GRAVITY")]
     [SerializeField] private float gravity = -9.8f;
 
@@ -22,7 +24,9 @@ public class PlayerController : MonoBehaviour
     private Vector3 _direction;
     private float yVelocity;
     public bool CanMove = true;
-    private bool _isJumping; 
+    private bool _isJumping;
+
+    private float initialJumpVelocity;
     
 
     private void Start()
@@ -30,6 +34,8 @@ public class PlayerController : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
 
         health = maxHealth;
+        
+        SetupJumpingVariables();
     }
 
     private void Update()
@@ -57,7 +63,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_characterController.isGrounded)
         {
-            yVelocity = -0.5f;
+            yVelocity = -1f;
         }
         yVelocity += gravity * Time.deltaTime;
 
@@ -72,7 +78,7 @@ public class PlayerController : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.Space))
             {
                 // player jumps
-                yVelocity = jumpHeight;
+                yVelocity = initialJumpVelocity;
             }
         }
         else
@@ -91,6 +97,13 @@ public class PlayerController : MonoBehaviour
         if (_direction.magnitude < 0.1f) return;
         Quaternion targetRotation = Quaternion.LookRotation(positionToLookAt);
         transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, rotationFactorPerFrame * Time.deltaTime);
+    }
+
+    private void SetupJumpingVariables()
+    {
+        float ti, timeToApex = maxJumpTime / 2;
+        gravity = (-2 * maxJumpHeight) / Mathf.Pow(timeToApex, 2);
+        initialJumpVelocity = (2 * maxJumpHeight) / timeToApex;
     }
 
     public bool IsRunning()
