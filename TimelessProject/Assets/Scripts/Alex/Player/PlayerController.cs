@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private float health;
     private CharacterController _characterController;
     private Vector3 _direction;
-    private float yMovement;
+    private float yVelocity;
     public bool CanMove = true;
     private bool _isJumping; 
     
@@ -50,12 +50,17 @@ public class PlayerController : MonoBehaviour
         Vector2 inputVector = GameInput.Instance.GetMovementVector();
         _direction = new Vector3(inputVector.x, 0, inputVector.y).normalized;
 
-        _characterController.Move((_direction * currentMoveSpeed  + new Vector3(0, yMovement, 0) ) * Time.deltaTime);
+        _characterController.Move((_direction * currentMoveSpeed  + new Vector3(0, yVelocity, 0) ) * Time.deltaTime);
     }
 
     private void HandleGravity()
     {
-        yMovement += gravity * Time.deltaTime;
+        if (_characterController.isGrounded)
+        {
+            yVelocity = 0;
+        }
+        yVelocity += gravity * Time.deltaTime;
+
     }
 
     private void HandleJumping()
@@ -67,7 +72,7 @@ public class PlayerController : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.Space))
             {
                 // player jumps
-                yMovement = jumpHeight;
+                yVelocity = jumpHeight;
             }
         }
         else
