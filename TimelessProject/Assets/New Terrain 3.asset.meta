@@ -1,6 +1,11 @@
 fileFormatVersion: 2
-guid: 481bc1ee36bf5ef4ba486da894a58596
+<<<<<<<< HEAD:TimelessProject/Assets/Polygonal Metalon/Scenes/Demo.unity.meta
+guid: 7a5c4650727e8544d96a1d27f810cefa
+DefaultImporter:
+========
+guid: 9e5a52f659855d84387dbf1bd4b40a88
 NativeFormatImporter:
+>>>>>>>> kio:TimelessProject/Assets/New Terrain 3.asset.meta
   externalObjects: {}
   mainObjectFileID: 15600000
   userData: 
