@@ -135,6 +135,8 @@ public class Enemy : MonoBehaviour, IDamagable
         {
             OnEnemyDie?.Invoke();
             _state = EnemyStates.Dead;
+            gameObject.GetComponent<Collider>().enabled = false;
+            
         }
         else
         {
