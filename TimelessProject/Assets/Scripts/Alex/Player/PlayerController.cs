@@ -55,7 +55,8 @@ public class PlayerController : MonoBehaviour
         
         Vector2 inputVector = GameInput.Instance.GetMovementVector();
         _direction = new Vector3(inputVector.x, 0, inputVector.y).normalized;
-
+        
+        Physics.SyncTransforms();
         _characterController.Move((_direction * currentMoveSpeed  + new Vector3(0, yVelocity, 0) ) * Time.deltaTime);
     }
 
@@ -101,7 +102,7 @@ public class PlayerController : MonoBehaviour
 
     private void SetupJumpingVariables()
     {
-        float ti, timeToApex = maxJumpTime / 2;
+        float timeToApex = maxJumpTime / 2;
         gravity = (-2 * maxJumpHeight) / Mathf.Pow(timeToApex, 2);
         initialJumpVelocity = (2 * maxJumpHeight) / timeToApex;
     }
