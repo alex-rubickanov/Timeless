@@ -4,7 +4,9 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [Header("SET THE MAX HP")]
-    [SerializeField] private float maxHealth;
+    [SerializeField] private int maxHealth;
+    [Header("ASSIGN FLOAT REFERENCE FOR HEALTH")] 
+    [SerializeField] private FloatReference healthValue;
     [Header("SET THE RUNNING SPEED")]
     [SerializeField] private float runSpeed;
     [Header("SET THE SPRINT SPEED")]
@@ -19,23 +21,23 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float gravity = -9.8f;
 
 
-    private float health;
     private CharacterController _characterController;
     private Vector3 _direction;
-    private float yVelocity;
-    public bool CanMove = true;
+    private float _yVelocity;
     private bool _isJumping;
-
-    private float initialJumpVelocity;
+    private float _initialJumpVelocity;
     
+    public bool CanMove = true;
 
     private void Start()
     {
         _characterController = GetComponent<CharacterController>();
 
-        health = maxHealth;
+        healthValue.value = maxHealth;
         
         SetupJumpingVariables();
+
+        //GameInput.Instance.OnJumpAction += Jump; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     }
 
     private void Update()
@@ -57,16 +59,16 @@ public class PlayerController : MonoBehaviour
         _direction = new Vector3(inputVector.x, 0, inputVector.y).normalized;
         
         Physics.SyncTransforms();
-        _characterController.Move((_direction * currentMoveSpeed  + new Vector3(0, yVelocity, 0) ) * Time.deltaTime);
+        _characterController.Move((_direction * currentMoveSpeed  + new Vector3(0, _yVelocity, 0) ) * Time.deltaTime);
     }
 
     private void HandleGravity()
     {
         if (_characterController.isGrounded)
         {
-            yVelocity = -1f;
+            _yVelocity = -1f;
         }
-        yVelocity += gravity * Time.deltaTime;
+        _yVelocity += gravity * Time.deltaTime;
 
     }
 
@@ -79,12 +81,20 @@ public class PlayerController : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.Space))
             {
                 // player jumps
-                yVelocity = initialJumpVelocity;
+                _yVelocity = _initialJumpVelocity;
             }
         }
         else
         {
             _isJumping = true;
+        }
+    }
+
+    private void Jump()
+    {
+        if (_characterController.isGrounded)
+        {
+            _yVelocity = _initialJumpVelocity;
         }
     }
 
@@ -104,7 +114,7 @@ public class PlayerController : MonoBehaviour
     {
         float timeToApex = maxJumpTime / 2;
         gravity = (-2 * maxJumpHeight) / Mathf.Pow(timeToApex, 2);
-        initialJumpVelocity = (2 * maxJumpHeight) / timeToApex;
+        _initialJumpVelocity = (2 * maxJumpHeight) / timeToApex;
     }
 
     public bool IsRunning()
@@ -119,9 +129,11 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        health -= damage;
+        healthValue.value -= damage;
+        Debug.Log(healthValue.value);
         if (IsDead())
         {
+            healthValue.value = 0;
             // DEAD
         }
         else
@@ -133,7 +145,7 @@ public class PlayerController : MonoBehaviour
 
     private bool IsDead()
     {
-        return health <= 0;
+        return healthValue.value <= 0;
     }
 
     public bool IsGrounded()

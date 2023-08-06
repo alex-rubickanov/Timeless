@@ -11,6 +11,7 @@ public class GameInput : MonoBehaviour
     private bool _isSprintPressed;
 
     public Action OnAttackAction;
+    public Action OnJumpAction;
     
     private void Awake()
     {
@@ -23,7 +24,14 @@ public class GameInput : MonoBehaviour
         _inputActions.Player.Sprint.canceled += SetSprint;
         
         _inputActions.Player.Attack.performed += OnAttack_performed;
+
+        _inputActions.Player.Jump.performed += OnJump_performed;
         
+    }
+
+    private void OnJump_performed(InputAction.CallbackContext obj)
+    {
+        OnJumpAction?.Invoke();
     }
 
     private void OnAttack_performed(InputAction.CallbackContext obj)
