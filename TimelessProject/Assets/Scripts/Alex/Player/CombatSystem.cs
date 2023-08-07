@@ -8,6 +8,7 @@ public class CombatSystem : MonoBehaviour
     [SerializeField] private float attackRange;
     [SerializeField] private float meleeDamage;
 
+
     private PlayerController _playerController;
     private bool _canAttack = true;
 

@@ -11,7 +11,8 @@ public class Enemy : MonoBehaviour, IDamagable
     [SerializeField] private float attackTimeout;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRange;
-    
+    [SerializeField] private AudioClip enemyHitSound;
+
     private float _health;
     private EnemyStates _state;
     private Transform _playerTransform;
@@ -114,7 +115,9 @@ public class Enemy : MonoBehaviour, IDamagable
 
     private void FollowPlayer()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _playerTransform.position, moveSpeed * Time.deltaTime);
+        Vector3 target = _playerTransform.position;
+        target.y = transform.position.y;
+        transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
     }
 
     private float GetDistanceToPlayer()
@@ -135,6 +138,8 @@ public class Enemy : MonoBehaviour, IDamagable
     public void TakeDamage(float takenDamage)
     {
         _health -= takenDamage;
+        AudioSystem.Instance.PlaySound(enemyHitSound, transform.position);
+        
         if (IsDead())
         {
             OnEnemyDie?.Invoke();

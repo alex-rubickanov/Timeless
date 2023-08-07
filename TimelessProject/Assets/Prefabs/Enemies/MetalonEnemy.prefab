@@ -1178,6 +1178,7 @@ MonoBehaviour:
   attackTimeout: 3
   attackPoint: {fileID: 4083661324291932286}
   attackRange: 0.66
+  enemyHitSound: {fileID: 8300000, guid: bc433907bbc918945b210b2bee91e956, type: 3}
 --- !u!114 &8363975085738727052
 MonoBehaviour:
   m_ObjectHideFlags: 0

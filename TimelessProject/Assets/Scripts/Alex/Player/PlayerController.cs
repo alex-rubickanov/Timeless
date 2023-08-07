@@ -21,6 +21,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxJumpTime = 0.5f;
     [Header("SET THE GRAVITY")]
     [SerializeField] private float gravity = -9.8f;
+    [Header("ASSIGN SOUND EFFECTS")]
+    [SerializeField] private AudioClip[] footsteps;
+    [SerializeField] private AudioClip onGrounded;
+    [SerializeField] private AudioClip[] playerHitSound;
+
+    
     public UnityAction action;
 
     private CharacterController _characterController;
@@ -30,10 +36,6 @@ public class PlayerController : MonoBehaviour
     private float _initialJumpVelocity;
     
     public bool CanMove = true;
-    public Action OnFootstepAction;
-
-
-    [SerializeField] private AudioClip[] footsteps;
 
     private void Start()
     {
@@ -78,7 +80,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    public async void Jump()
+    private async void Jump()
     {
         if (_characterController.isGrounded)
         {
@@ -124,6 +126,7 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(float damage)
     {
         healthValue.value -= damage;
+        AudioSystem.Instance.PlaySound(playerHitSound[UnityEngine.Random.Range(0, playerHitSound.Length)], transform.position);
         Debug.Log(healthValue.value);
         if (IsDead())
         {
