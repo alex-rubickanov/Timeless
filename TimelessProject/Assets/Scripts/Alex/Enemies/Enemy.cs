@@ -44,6 +44,8 @@ public class Enemy : MonoBehaviour, IDamagable
     
     private void Update()
     {
+        Vector3 targetPos = _playerTransform.position;
+        targetPos.y = transform.position.y;
         switch (_state)
         {
             case EnemyStates.Idle:
@@ -64,13 +66,15 @@ public class Enemy : MonoBehaviour, IDamagable
                 else
                 {
                     FollowPlayer();
-                    transform.LookAt(_playerTransform.position);
+                    transform.LookAt(targetPos);
                 }
                 break;
             case EnemyStates.Comeback:
                 if (transform.position != _startPos)
                 {
                     MoveToStartPosition();
+                    _startPos.y = this.transform.position.y;
+
                     transform.LookAt(_startPos);
                 }
                 else
@@ -92,7 +96,7 @@ public class Enemy : MonoBehaviour, IDamagable
                 }
                 
                 
-                transform.LookAt(_playerTransform.position);
+                transform.LookAt(targetPos);
                 if ((GetDistanceToPlayer() > distanceToAttack + 1.0f))
                 {
                     attackTimeoutTimer = attackTimeout;

@@ -1,5 +1,7 @@
+using System;
+using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,7 +21,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxJumpTime = 0.5f;
     [Header("SET THE GRAVITY")]
     [SerializeField] private float gravity = -9.8f;
-
+    public UnityAction action;
 
     private CharacterController _characterController;
     private Vector3 _direction;
@@ -28,6 +30,10 @@ public class PlayerController : MonoBehaviour
     private float _initialJumpVelocity;
     
     public bool CanMove = true;
+    public Action OnFootstepAction;
+
+
+    [SerializeField] private AudioClip[] footsteps;
 
     private void Start()
     {
@@ -36,14 +42,13 @@ public class PlayerController : MonoBehaviour
         healthValue.value = maxHealth;
         
         SetupJumpingVariables();
-
-        //GameInput.Instance.OnJumpAction += Jump; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        GameInput.Instance.OnJumpAction += Jump;
     }
 
     private void Update()
     {
         HandleGravity();
-        HandleJumping();
+        //HandleJumping();
         HandleMovement();
         HandleRotation();
     }
@@ -53,7 +58,7 @@ public class PlayerController : MonoBehaviour
         if (!CanMove) return;
         
         float currentMoveSpeed = GameInput.Instance.IsSprintPressed() ? sprintSpeed : runSpeed;
-        if (_isJumping) currentMoveSpeed = runSpeed;
+        if (!_characterController.isGrounded) currentMoveSpeed = runSpeed;
         
         Vector2 inputVector = GameInput.Instance.GetMovementVector();
         _direction = new Vector3(inputVector.x, 0, inputVector.y).normalized;
@@ -64,7 +69,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleGravity()
     {
-        if (_characterController.isGrounded)
+        if (_characterController.isGrounded && !_isJumping)
         {
             _yVelocity = -1f;
         }
@@ -72,29 +77,18 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void HandleJumping()
+
+    public async void Jump()
     {
         if (_characterController.isGrounded)
-        {
-            // player is grounded
-            _isJumping = false;
-            if(Input.GetKeyDown(KeyCode.Space))
-            {
-                // player jumps
-                _yVelocity = _initialJumpVelocity;
-            }
-        }
-        else
         {
             _isJumping = true;
-        }
-    }
-
-    private void Jump()
-    {
-        if (_characterController.isGrounded)
-        {
             _yVelocity = _initialJumpVelocity;
+            while(_characterController.isGrounded)
+            {
+                await Task.Yield();
+            }
+            _isJumping = false;
         }
     }
 
@@ -151,5 +145,11 @@ public class PlayerController : MonoBehaviour
     public bool IsGrounded()
     {
         return _characterController.isGrounded;
+    }
+
+    public void OnFootstep()
+    {
+        var randomClip = footsteps[UnityEngine.Random.Range(0, footsteps.Length)];
+        AudioSystem.Instance.PlaySound(randomClip, transform.position);
     }
 }

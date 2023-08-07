@@ -2770,6 +2770,7 @@ GameObject:
   - component: {fileID: 3230792847118420320}
   - component: {fileID: 6065671819305258600}
   - component: {fileID: 6479364504865393336}
+  - component: {fileID: 2269479523061885741}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -2792,7 +2793,7 @@ Transform:
   - {fileID: 817176102106592946}
   - {fileID: 1759120478907323043}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5682070063264103696
 MonoBehaviour:
@@ -2821,13 +2822,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13915cdad907dfb42b7e9dc4331c7078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
+  healthValue: {fileID: 11400000, guid: 9ee6544acea460e4e882bb24b97a0a1e, type: 2}
   runSpeed: 3
   sprintSpeed: 6
   rotationFactorPerFrame: 6
-  jumpHeight: 6
+  maxJumpHeight: 1.7
+  maxJumpTime: 0.7
   gravity: -9.8
   CanMove: 1
-  _isJumping: 0
 --- !u!143 &3230792847118420320
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2887,6 +2890,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb6c23cd0956dea46bfe74cf4bc3d96d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2269479523061885741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6170129849566592445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 903265b01c6b7ca4db1c774460eb66cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceToInteract: 1.5
 --- !u!1 &6368672446221325255
 GameObject:
   m_ObjectHideFlags: 0
