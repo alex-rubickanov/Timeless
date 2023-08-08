@@ -2830,6 +2830,15 @@ MonoBehaviour:
   maxJumpHeight: 1.7
   maxJumpTime: 0.7
   gravity: -9.8
+  footsteps:
+  - {fileID: 8300000, guid: 1d3a3e92539055d4e803101cd459f420, type: 3}
+  - {fileID: 8300000, guid: 06668b048c356894dbf0f9be6a4e6bec, type: 3}
+  - {fileID: 8300000, guid: f65d6c1606c74ee438218ea32b1f1961, type: 3}
+  onGrounded: {fileID: 8300000, guid: ff697d3070687ce4583faa0561a145a2, type: 3}
+  playerHitSound:
+  - {fileID: 8300000, guid: cd19281963f2bd8488e648fee72966f3, type: 3}
+  - {fileID: 8300000, guid: 78166c4c466c34648ac7bac9a652aeea, type: 3}
+  - {fileID: 8300000, guid: cdc8921a069758b45b87efc6e3223c62, type: 3}
   CanMove: 1
 --- !u!143 &3230792847118420320
 CharacterController:
