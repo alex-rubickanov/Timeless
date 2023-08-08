@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70e901587237ecc44a093f9a9ae65627, type: 3}
+  m_Name: FemaleGuards
+  m_EditorClassIdentifier: 
+  SpeakerOne: {fileID: 11400000, guid: 085a655d5ed337f4fa5964c849265a36, type: 2}
+  SpeakerTwo: {fileID: 11400000, guid: 085a655d5ed337f4fa5964c849265a36, type: 2}
+  Sentences:
+  - sentenceText: Stop! It is the Queen's order to not let any trespassers through!
+    IsFirstSpeaker: 0
+  - sentenceText: I thought it was my turn to say that!
+    IsFirstSpeaker: 1
+  - sentenceText: You were being too slow.
+    IsFirstSpeaker: 0
