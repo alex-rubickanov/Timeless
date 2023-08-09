@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70e901587237ecc44a093f9a9ae65627, type: 3}
+  m_Name: FemaleMedieval1
+  m_EditorClassIdentifier: 
+  SpeakerOne: {fileID: 11400000, guid: 0b304053321d80041ac7c3e65d85f2f3, type: 2}
+  SpeakerTwo: {fileID: 11400000, guid: 0b304053321d80041ac7c3e65d85f2f3, type: 2}
+  Sentences:
+  - sentenceText: You seem new around here. Looking for something?
+    IsFirstSpeaker: 0
+  - sentenceText: Oh, you're looking for a way to the mountains?
+    IsFirstSpeaker: 0
+  - sentenceText: The castlegrounds are to be locked soon, so it's best to take the
+      alleyway. I would be careful if I were you.
+    IsFirstSpeaker: 0
+  - sentenceText: Take the path on my right and you'll be headed out of here soon
+      enough.
+    IsFirstSpeaker: 0
