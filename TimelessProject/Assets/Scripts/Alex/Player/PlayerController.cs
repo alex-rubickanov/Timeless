@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip[] footsteps;
     [SerializeField] private AudioClip onGrounded;
     [SerializeField] private AudioClip[] playerHitSound;
-
+    [SerializeField] private Transform direction;
     
     public UnityAction action;
 
@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
     private float _initialJumpVelocity;
     
     public bool CanMove = true;
+
+    [SerializeField] private Transform checkPoint;
 
     private void Start()
     {
@@ -64,7 +66,7 @@ public class PlayerController : MonoBehaviour
         
         Vector2 inputVector = GameInput.Instance.GetMovementVector();
         _direction = new Vector3(inputVector.x, 0, inputVector.y).normalized;
-        
+        _direction = direction.InverseTransformDirection(_direction);
         Physics.SyncTransforms();
         _characterController.Move((_direction * currentMoveSpeed  + new Vector3(0, _yVelocity, 0) ) * Time.deltaTime);
     }
@@ -131,7 +133,8 @@ public class PlayerController : MonoBehaviour
         if (IsDead())
         {
             healthValue.value = 0;
-            // DEAD
+
+            transform.position = checkPoint.transform.position;
         }
         else
         {
