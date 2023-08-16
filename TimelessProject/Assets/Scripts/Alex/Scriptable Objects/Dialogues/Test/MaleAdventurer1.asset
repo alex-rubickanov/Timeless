@@ -15,5 +15,11 @@ MonoBehaviour:
   SpeakerOne: {fileID: 11400000, guid: 59121b2dabb25cc489a3ae9df83a21c7, type: 2}
   SpeakerTwo: {fileID: 11400000, guid: 59121b2dabb25cc489a3ae9df83a21c7, type: 2}
   Sentences:
-  - sentenceText: Welcome to Houndbay!
+  - sentenceText: It seems that Houndbay's marketplace is flooded.
+    IsFirstSpeaker: 0
+  - sentenceText: I heard that something's happened at the higher courts..
+    IsFirstSpeaker: 0
+  - sentenceText: Something about... angering the high enchanters and enchantress?
+    IsFirstSpeaker: 0
+  - sentenceText: Anyways, if you follow down the path you'll find an exit from here.
     IsFirstSpeaker: 0
