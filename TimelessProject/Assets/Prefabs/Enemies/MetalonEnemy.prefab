@@ -1073,8 +1073,8 @@ GameObject:
   - component: {fileID: 8136920130238781314}
   - component: {fileID: 8975831160114594269}
   - component: {fileID: 8592442702359454786}
-  - component: {fileID: 2061296670730998700}
-  - component: {fileID: 8363975085738727052}
+  - component: {fileID: 7597462240682521113}
+  - component: {fileID: 4025132972026948173}
   m_Layer: 0
   m_Name: MetalonEnemy
   m_TagString: Untagged
@@ -1114,7 +1114,7 @@ Transform:
   - {fileID: 7476181580758211065}
   - {fileID: 4083661324291932286}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8975831160114594269
 Animator:
@@ -1158,7 +1158,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.7487984, y: 1.9432857, z: 4.3275685}
   m_Center: {x: -0.003684589, y: 0.9557834, z: 0.21768673}
---- !u!114 &2061296670730998700
+--- !u!114 &7597462240682521113
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1167,19 +1167,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 6078084708061447270}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88087a3d6ca55974f9740b6cff082cf1, type: 3}
+  m_Script: {fileID: 11500000, guid: 18d479073380c72459af0e86afb84bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  maxHealth: 80
+  attackPoint: {fileID: 4083661324291932286}
+  health: 1
+  damage: 100
   distanceToSpotPlayer: 10
   moveSpeed: 2
   distanceToAttack: 2.5
-  attackTimeout: 3
-  attackPoint: {fileID: 4083661324291932286}
-  attackRange: 0.66
-  enemyHitSound: {fileID: 8300000, guid: bc433907bbc918945b210b2bee91e956, type: 3}
---- !u!114 &8363975085738727052
+  attackTimeOut: 1.5
+  attackRange: 0.46
+--- !u!114 &4025132972026948173
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

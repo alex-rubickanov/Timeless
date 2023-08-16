@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyAnimations : MonoBehaviour
 {
     private Animator _animator;
-    private Enemy _enemy;
+    private EnemyStateMachine _enemy;
     
     private int _animIDIsMoving;
     private int _animIDTakeDamage;
@@ -17,7 +17,7 @@ public class EnemyAnimations : MonoBehaviour
 
     private void Start()
     {
-        _enemy = GetComponent<Enemy>();
+        _enemy = GetComponent<EnemyStateMachine>();
         _animator = GetComponent<Animator>();
         
         AssignAnimationsID();
