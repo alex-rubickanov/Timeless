@@ -10,6 +10,7 @@ public class EnemyCombat : EnemyBaseState
 
     public override void UpdateState(EnemyStateMachine enemy)
     {
+        
         attackTimer += Time.deltaTime;
         
         if (attackTimer >= enemy.GetAttackTimeOut())

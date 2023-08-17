@@ -31,8 +31,9 @@ public class CameraBehaviour : MonoBehaviour
 
         Vector3 requiredPosition = target.position + positionOffset;
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, requiredPosition, smoothFollow);
-        transform.position = useClamp ? 
-            new Vector3(Mathf.Clamp(smoothedPosition.x, minClampXPos, maxClampXPos), fixedYPosition, Mathf.Clamp(smoothedPosition.z, minClampZPos, maxClampZPos)) : smoothedPosition;
+        // transform.position = useClamp ? 
+            // new Vector3(Mathf.Clamp(smoothedPosition.x, minClampXPos, maxClampXPos), fixedYPosition, Mathf.Clamp(smoothedPosition.z, minClampZPos, maxClampZPos)) : smoothedPosition;
         
+            transform.position = requiredPosition;
     }
 }

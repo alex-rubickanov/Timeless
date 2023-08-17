@@ -90,7 +90,15 @@ public class EnemyStateMachine : MonoBehaviour, IDamagable
     public void TakeDamage(float receivedDamage)
     {
         health -= receivedDamage;
-        OnEnemyTakeDamage?.Invoke();
+        if (health > 0)
+        {
+            OnEnemyTakeDamage?.Invoke();
+        }
+        else
+        {
+            OnEnemyDie?.Invoke();
+            SwitchState(DeadState);
+        }
     }
 
     public bool IsDead()

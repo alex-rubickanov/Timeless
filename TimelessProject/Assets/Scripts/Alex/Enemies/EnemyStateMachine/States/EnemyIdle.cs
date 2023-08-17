@@ -11,8 +11,6 @@ public class EnemyIdle : EnemyBaseState
 
     public override void UpdateState(EnemyStateMachine enemy)
     {
-        base.UpdateState(enemy);
-        
         if ((enemy.GetPlayerPosition() - enemy.transform.position).magnitude < enemy.GetDistanceToSpotPlayer())
         {
             enemy.SwitchState(enemy.FollowState);

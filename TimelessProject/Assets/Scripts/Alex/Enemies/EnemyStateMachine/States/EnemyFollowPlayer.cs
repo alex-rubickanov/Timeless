@@ -9,8 +9,6 @@ public class EnemyFollowPlayer : EnemyBaseState
 
     public override void UpdateState(EnemyStateMachine enemy)
     {
-        base.UpdateState(enemy);
-        
         Vector3 target = enemy.GetPlayerPosition();
         Vector3 position = enemy.transform.position;
         
@@ -31,4 +29,5 @@ public class EnemyFollowPlayer : EnemyBaseState
             enemy.SwitchState(enemy.CombatState);
         }
     }
+    
 }
