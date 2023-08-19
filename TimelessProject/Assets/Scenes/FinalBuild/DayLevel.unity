@@ -6869,6 +6869,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1317402247622272636, guid: e0dbe8bd8994bfe47ab45f4219e4fe99,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5400891336246958905, guid: e0dbe8bd8994bfe47ab45f4219e4fe99,
         type: 3}
       propertyPath: m_Pivot.x
@@ -6974,10 +6979,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7799727362656668839, guid: e0dbe8bd8994bfe47ab45f4219e4fe99,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8741987590446241003, guid: e0dbe8bd8994bfe47ab45f4219e4fe99,
         type: 3}
       propertyPath: m_Name
       value: OptionsMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 8741987590446241003, guid: e0dbe8bd8994bfe47ab45f4219e4fe99,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8866668561549775392, guid: e0dbe8bd8994bfe47ab45f4219e4fe99,
         type: 3}
@@ -7362,6 +7377,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PauseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 2373021362745655086, guid: 5d4abdfa511c6e343b43489975629d3f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5004074236595028857, guid: 5d4abdfa511c6e343b43489975629d3f,
         type: 3}
