@@ -17,8 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalBuild/NightLevelDemo.unity
     guid: 3585121054c92b0439960de783d2553e
-  - enabled: 1
-    path: Assets/Scenes/FinalBuild/EndScene.unity
+  - enabled: 0
+    path: Assets/Scenes/EndScene.unity
     guid: be37b22b218cfa54bbea25bb13fb0b6c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7,
