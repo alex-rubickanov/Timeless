@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70e901587237ecc44a093f9a9ae65627, type: 3}
+  m_Name: MaleAdventurer1
+  m_EditorClassIdentifier: 
+  SpeakerOne: {fileID: 11400000, guid: 59121b2dabb25cc489a3ae9df83a21c7, type: 2}
+  SpeakerTwo: {fileID: 11400000, guid: 59121b2dabb25cc489a3ae9df83a21c7, type: 2}
+  Sentences:
+  - sentenceText: It seems that Houndbay's marketplace is flooded.
+    IsFirstSpeaker: 0
+  - sentenceText: I heard that something's happened at the higher courts..
+    IsFirstSpeaker: 0
+  - sentenceText: Something about... angering the high enchanters and enchantress?
+    IsFirstSpeaker: 0
+  - sentenceText: Anyways, if you follow down the path you'll find an exit from here.
+    IsFirstSpeaker: 0

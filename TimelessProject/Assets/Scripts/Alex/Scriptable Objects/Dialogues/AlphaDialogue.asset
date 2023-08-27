@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70e901587237ecc44a093f9a9ae65627, type: 3}
+  m_Name: AlphaDialogue
+  m_EditorClassIdentifier: 
+  SpeakerOne: {fileID: 11400000, guid: b4cbbf27ff0dbf14a96ececadd027533, type: 2}
+  SpeakerTwo: {fileID: 11400000, guid: 1b8f34c3f90ba0748b8e9d9cb4825bef, type: 2}
+  Sentences:
+  - sentenceText: This is dialogue TEST!
+    IsFirstSpeaker: 1
+  - sentenceText: Yes
+    IsFirstSpeaker: 0
+  - sentenceText: asjijsaod
+    IsFirstSpeaker: 1
+  - sentenceText: asdasdffasdfafdasfa
+    IsFirstSpeaker: 0
+  - sentenceText: asfafafaf
+    IsFirstSpeaker: 1
+  - sentenceText: aasdf';lkasspfoaih[foug
+    IsFirstSpeaker: 1
